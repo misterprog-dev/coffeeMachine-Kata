@@ -4,18 +4,19 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static com.dsoumaila.coffeemachine.Coffee.TEA;
+import static com.dsoumaila.coffeemachine.Drink.TEA;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CoffeeMachineTest {
+public class DrinkMachineTest {
 
     @Test
     public void should_display_type_of_drink() {
         // GIVEN
-        CoffeeMachine coffeeMachine = new CoffeeMachine();
+        Pad pad = new Pad(TEA, 0, new BigDecimal("0.4"));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(pad);
 
         // WHEN
-        String message = coffeeMachine.display(TEA, 0, new BigDecimal("0.4"));
+        String message = coffeeMachine.display();
 
         // THEN
         assertThat(message).isEqualTo("T::");
@@ -24,10 +25,11 @@ public class CoffeeMachineTest {
     @Test
     public void should_display_drink_with_sugar_and_stick() {
         // GIVEN
-        CoffeeMachine coffeeMachine = new CoffeeMachine();
+        Pad pad = new Pad(TEA, 1, new BigDecimal("0.4"));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(pad);
 
         // WHEN
-        String message = coffeeMachine.display(TEA, 1, new BigDecimal("0.4"));
+        String message = coffeeMachine.display();
 
         // THEN
         assertThat(message).isEqualTo("T:1:0");
@@ -36,10 +38,11 @@ public class CoffeeMachineTest {
     @Test
     public void should_display_drink_with_number_of_sugar_and_stick() {
         // GIVEN
-        CoffeeMachine coffeeMachine = new CoffeeMachine();
+        Pad pad = new Pad(TEA, 3, new BigDecimal("0.4"));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(pad);
 
         // WHEN
-        String message = coffeeMachine.display(TEA, 3, new BigDecimal("0.4"));
+        String message = coffeeMachine.display();
 
         // THEN
         assertThat(message).isEqualTo("T:3:0");
@@ -48,10 +51,11 @@ public class CoffeeMachineTest {
     @Test
     public void should_warn_user_for_missing_money() {
         // GIVEN
-        CoffeeMachine coffeeMachine = new CoffeeMachine();
+        Pad pad = new Pad(TEA, 3, new BigDecimal("0.2"));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(pad);
 
         // WHEN
-        String message = coffeeMachine.display(TEA, 3, new BigDecimal("0.2"));
+        String message = coffeeMachine.display();
 
         // THEN
         assertThat(message).isEqualTo("M:Missing 0.2 €");
