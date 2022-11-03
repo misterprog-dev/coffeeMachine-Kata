@@ -19,6 +19,13 @@ public class CoffeeMachine {
         if (restOfMoney.compareTo(ZERO) > 0) {
             return "M:Missing " + restOfMoney.setScale(1) + " €";
         }
-        return pad.getTypeOfDrink() + (pad.getQuantityOfSugar() == 0 ? "::" : ":" + pad.getQuantityOfSugar() + ":0");
+
+        if (pad.isOrange()) {
+            return pad.getTypeOfDrink() + "::";
+        }
+
+        String drink = pad.getTypeOfDrink() + (pad.isExtratHot() ? "h" : "");
+
+        return drink + (pad.getQuantityOfSugar() == 0 ? "::" : ":" + pad.getQuantityOfSugar() + ":0");
     }
 }

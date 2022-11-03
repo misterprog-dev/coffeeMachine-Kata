@@ -46,6 +46,18 @@ class PadTest {
     }
 
     @Test
+    public void should_get_the_rest_of_money_for_orange() {
+        // GIVEN
+        Pad pad = new Pad(ORANGE, 2, new BigDecimal("0.2"));
+
+        // WHEN
+        BigDecimal result = pad.getTheRestOfMoney();
+
+        // THEN
+        assertThat(result).isEqualTo(new BigDecimal("0.4"));
+    }
+
+    @Test
     public void should_get_zero_for_the_rest_of_money() {
         // GIVEN
         Pad pad = new Pad(TEA, 2, new BigDecimal("0.4"));

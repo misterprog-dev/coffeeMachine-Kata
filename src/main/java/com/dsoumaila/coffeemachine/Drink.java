@@ -3,7 +3,8 @@ package com.dsoumaila.coffeemachine;
 public enum Drink {
     TEA("T"),
     COFFEE("C"),
-    CHOCOLATE("H");
+    CHOCOLATE("H"),
+    ORANGE("O");
 
     private String value;
 

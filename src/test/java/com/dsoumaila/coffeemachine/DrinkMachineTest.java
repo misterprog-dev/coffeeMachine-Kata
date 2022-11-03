@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static com.dsoumaila.coffeemachine.Drink.ORANGE;
 import static com.dsoumaila.coffeemachine.Drink.TEA;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -59,5 +60,31 @@ public class DrinkMachineTest {
 
         // THEN
         assertThat(message).isEqualTo("M:Missing 0.2 €");
+    }
+
+    @Test
+    public void should_make_orange_juice() {
+        // GIVEN
+        Pad pad = new Pad(ORANGE, 3, new BigDecimal("0.6"));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(pad);
+
+        // WHEN
+        String message = coffeeMachine.display();
+
+        // THEN
+        assertThat(message).isEqualTo("O::");
+    }
+
+    @Test
+    public void should_display_extra_hot_drink() {
+        // GIVEN
+        Pad pad = new Pad(TEA, 3, new BigDecimal("0.4"), true);
+        CoffeeMachine coffeeMachine = new CoffeeMachine(pad);
+
+        // WHEN
+        String message = coffeeMachine.display();
+
+        // THEN
+        assertThat(message).isEqualTo("Th:3:0");
     }
 }
