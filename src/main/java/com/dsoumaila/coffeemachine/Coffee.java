@@ -1,13 +1,13 @@
 package com.dsoumaila.coffeemachine;
 
-public enum TypeOfCoffee {
+public enum Coffee {
     TEA("T"),
     COFFEE("C"),
     CHOCOLATE("H");
 
     private String value;
 
-    TypeOfCoffee(String value) {
+    Coffee(String value) {
         this.value = value;
     }
 
